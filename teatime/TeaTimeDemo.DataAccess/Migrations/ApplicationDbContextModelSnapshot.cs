@@ -27,6 +27,7 @@ namespace TeaTimeDemo.DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(30)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -19,5 +19,15 @@ namespace TeaTimeDemo.DataAccess.Data
                 new Category { Id = 3, Name = "咖啡", DisplayOrder = 3 }
             );
         }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                // Hard-coded SQLite connection string and migration assembly
+                optionsBuilder.UseSqlite("Data Source=/home/yizaochen/codes/dotnet-tutorial/dotnet_learn/teatime/TeaTimeDemo.DataAccess/TeaTime.db",
+                    sqliteOptions => sqliteOptions.MigrationsAssembly("TeaTimeDemo.DataAccess"));
+            }
+        }
     }
 }
